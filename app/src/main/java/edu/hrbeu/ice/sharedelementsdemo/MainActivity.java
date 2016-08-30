@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         list.add(itemBean1);
         list.add(itemBean2);
         list.add(itemBean3);
+        list.add(itemBean1);
+        list.add(itemBean2);
+        list.add(itemBean3);
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -37,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Intent intent;
+                if (position < 3)
+                    intent = new Intent(MainActivity.this, DetailActivity2.class);
+                else
+                    intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("bean", list.get(position));
                 // create the transition animation - the images in the layouts
                 // of both activities are defined with android:transitionName="robot"
